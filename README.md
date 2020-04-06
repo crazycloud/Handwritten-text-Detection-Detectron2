@@ -22,7 +22,7 @@ Simple steps to train a vision model in Detectron2
 #### Dataset Preparation(step 1 & 2)
 Detectron2 expects the dataset as list[dict] in the following format. So for training with detectron2 we will have to convert our dataset in the following format.
 
-```json
+```python
 [{'file_name': 'datasets/JPEGImages/1.jpg',
   'image_id': '1',
   'height': 3300,
