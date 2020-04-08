@@ -74,7 +74,6 @@ def visualize_dataset(datasetname, n_samples=10):
         plt.axis("off")
         plt.imshow(vis.get_image()[:, :, ::-1])
         plt.show()
-
         
 def register_pascal_voc(name, dirname, split, CLASS_NAMES):
     if name not in DatasetCatalog.list():
