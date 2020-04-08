@@ -71,13 +71,17 @@ def visualize_dataset(datasetname, n_samples=10):
         metadata=metadata, scale=0.5)
         vis = visualizer.draw_dataset_dict(d)
         figure(num=None, figsize=(15, 15), dpi=100, facecolor='w', edgecolor='k')
+        plt.axis("off")
         plt.imshow(vis.get_image()[:, :, ::-1])
         plt.show()
+
         
 def register_pascal_voc(name, dirname, split, CLASS_NAMES):
-    DatasetCatalog.register(name, lambda: load_voc_instances(dirname, split, CLASS_NAMES))
+    if name not in DatasetCatalog.list():
+        DatasetCatalog.register(name, lambda: load_voc_instances(dirname, split, CLASS_NAMES))
+        
     MetadataCatalog.get(name).set(
-        thing_classes=CLASS_NAMES, split=split
+        thing_classes=CLASS_NAMES, split=split, dirname= dirname, year=2012
     )
     
 
